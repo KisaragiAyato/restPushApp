@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>休憩を促すwebアプリ</title>
+  
+  <!-- HTML -->
+  
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1>休憩を促すwebアプリ</h1>
+  <input type="number" value=45 id="setteiInput1" oninput="value = onlyNumbers(value)">分経過したら通知する
+  <br>
+  <input type="number" value=15 id="setteiInput2" oninput="value = onlyNumbers(value)">分休憩する
+  <br>
+  <button onclick="setteiOnclick()">設定</button>
+  <br>
+  <br>
+  <button onclick="kaishiOnclick()">開始</button>
+  <button onclick="tyuushiOnclick()">中止</button>
+  
+  <br>
+  経過時間: <span id="keikaSpan">00:00</span>
+  
+  
+  <!-- Project -->
+  <script src="main.js"></script>
+</body>
+</html>
