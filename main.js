@@ -55,9 +55,9 @@ function kaishiOnclick(){
   let con = window.confirm("開始します");
   if(con == false)return;  
   
-  let nowTime = new Date();
+  //let nowTime = new Date();
   //startTime = nowTime.getTime();
-  staerTime = 1;
+  startTime = 1;
   
   intervalFunc = setInterval(checkTime,60000);
   
