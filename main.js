@@ -12,29 +12,6 @@ window.onload = function() {
   $("setteiInput2").value = setteiTime[1];
 
   //Notification.requestPermission();
-  
-
-};
-
-const onlyNumbers = n => {
-  return n.replace(/[０-９]/g, s => String.fromCharCode(s.charCodeAt(0) - 65248)).replace(/\D/g, '');
-}
-
-function setteiOnclick(){
-  
-    setteiTime[0] = $("setteiInput1").value;
-    setteiTime[1] = $("setteiInput2").value;
-    window.alert("設定しました");
-}
-
-let intervalFunc;
-
-function kaishiOnclick(){
-  if(startTime != 0)return;
-  let con = window.confirm("開始します");
-  if(con == false)return;
-
-
   //notifyMeのコピー元→　https://developer.mozilla.org/ja/docs/Web/API/Notification/permission_static
   function notifyMe() {
     if (!("Notification" in window)) {
@@ -58,7 +35,25 @@ function kaishiOnclick(){
   }
   notifyMe();
 
+};
+
+const onlyNumbers = n => {
+  return n.replace(/[０-９]/g, s => String.fromCharCode(s.charCodeAt(0) - 65248)).replace(/\D/g, '');
+}
+
+function setteiOnclick(){
   
+    setteiTime[0] = $("setteiInput1").value;
+    setteiTime[1] = $("setteiInput2").value;
+    window.alert("設定しました");
+}
+
+let intervalFunc;
+
+function kaishiOnclick(){
+  if(startTime != 0)return;
+  let con = window.confirm("開始します");
+  if(con == false)return;  
   
   let nowTime = new Date();
   //startTime = nowTime.getTime();
