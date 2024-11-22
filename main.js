@@ -2,6 +2,7 @@ let startTime = 0;
 let keikaTime = 0;
 let isKyuukeiNow = false;
 let setteiTime = [45,15];
+let canceled = false;
 
 function $(_id){
   return document.getElementById(_id);
@@ -47,7 +48,6 @@ function setteiOnclick(){
     window.alert("設定しました");
 }
 
-let intervalFunc;
 
 function kaishiOnclick(){
   if(startTime != 0)return;
@@ -58,9 +58,17 @@ function kaishiOnclick(){
   //startTime = nowTime.getTime();
   startTime = 1;
   
-  intervalFunc = setInterval(checkTime,60000);
+  let intervalFunc = setInterval(checkTime,60000);
   
   function checkTime(){
+    if(canceled){
+      clearInterval(intervalFunc);
+      startTime = 0;
+      keikaTime = 0;
+      $("keikaSpan").value = "00:00";
+      return;
+    }
+    
     //const currentTime = new Date();
     //keikaTime = Math.round( (currentTime.getTime() - startTime)/1000 );
     keikaTime++;
@@ -72,7 +80,7 @@ function kaishiOnclick(){
     }else if(isKyuukeiNow == true){
       if(keikaTime >= setteiTime[0] + setteiTime[1]){
         isKyuukeiNow = false;
-        startTime = new Date().getTime(); //開始時間の更新
+        //startTime = new Date().getTime(); //開始時間の更新
         keikaTime = 0;
         const notification = new Notification("休憩時間終了です")
       }
@@ -89,7 +97,7 @@ function tyuushiOnclick(){
   if(startTime == 0)return;
   let con = window.confirm("中止しますか?");
   if(con == false)return;
-  clearInterval(intervalFunc);
+  canceled = true;
   startTime = 0;
   keikaTime = 0;
   $("keikaSpan").value = "00:00";
