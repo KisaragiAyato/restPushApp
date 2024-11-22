@@ -10,7 +10,6 @@ function $(_id){
 window.onload = function() {
   $("setteiInput1").value = setteiTime[0];
   $("setteiInput2").value = setteiTime[1];
-  Notification.requestPermission();
 };
 
 const onlyNumbers = n => {
@@ -18,6 +17,7 @@ const onlyNumbers = n => {
 }
 
 function setteiOnclick(){
+  
     setteiTime[0] = $("setteiInput1").value;
     setteiTime[1] = $("setteiInput2").value;
     window.alert("設定しました");
@@ -29,15 +29,19 @@ function kaishiOnclick(){
   if(startTime != 0)return;
   let con = window.confirm("開始します");
   if(con == false)return;
+
+  Notification.requestPermission();
   
   let nowTime = new Date();
-  startTime = nowTime.getTime();
+  //startTime = nowTime.getTime();
+  staerTime = 1;
   
   intervalFunc = setInterval(checkTime,60000);
   
   function checkTime(){
-    const currentTime = new Date();
-    keikaTime = Math.round( (currentTime.getTime() - startTime)/1000 );
+    //const currentTime = new Date();
+    //keikaTime = Math.round( (currentTime.getTime() - startTime)/1000 );
+    keikaTime++;
     if(isKyuukeiNow == false){
       if(keikaTime >= setteiTime[0]){
         isKyuukeiNow = true;
