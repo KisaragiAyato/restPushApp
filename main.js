@@ -71,7 +71,7 @@ function kaishiOnclick(){
         const notification = new Notification("休憩の時間です")
       }
     }else if(isKyuukeiNow == true){
-      if(kikaTime >= setteiTime[0] + setteiTime[1]){
+      if(keikaTime >= setteiTime[0] + setteiTime[1]){
         isKyuukeiNow = false;
         startTime = new Date().getTime(); //開始時間の更新
         keikaTime = 0;
@@ -79,9 +79,9 @@ function kaishiOnclick(){
       }
     }
     let keikaHours = Math.floor(keikaTime / 60);
-    if(keikaHours < 10)kikaHours = "0" + keikaHours;
+    if(keikaHours < 10)keikaHours = "0" + keikaHours;
     let keikaMinutes = keikaTime % 60;
-    if (keikaMinutes < 10) kikaMinutes = "0" + keikaMinutes;
+    if (keikaMinutes < 10) keikaMinutes = "0" + keikaMinutes;
     $("keikaSpan").value = keikaHours + ":" + keikaMinutes ;
   }
 }
