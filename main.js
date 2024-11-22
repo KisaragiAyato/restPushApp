@@ -12,27 +12,7 @@ window.onload = function() {
   $("setteiInput2").value = setteiTime[1];
 
   //Notification.requestPermission();
-  //notifyMeのコピー元→　https://developer.mozilla.org/ja/docs/Web/API/Notification/permission_static
-  function notifyMe() {
-    if (!("Notification" in window)) {
-      // ブラウザーが通知に対応しているかどうかをチェックする
-      alert("このブラウザーはデスクトップ通知に対応していません。");
-    } else if (Notification.permission === "granted") {
-      // 通知の許可が既に得られているかどうかをチェックする
-      // それならば、通知を作成する
-      const notification = new Notification("こんにちは！");
-      // …
-    } else if (Notification.permission !== "denied") {
-      // そうでなければ、ユーザーに許可を求める必要がある
-      Notification.requestPermission().then((permission) => {
-        // ユーザーが許可したら、通知を作成する
-        if (permission === "granted") {
-          const notification = new Notification("こんにちは！");
-          // …
-        }
-      });
-    }
-    notifyMe();
+  
 
 };
 
@@ -53,6 +33,32 @@ function kaishiOnclick(){
   if(startTime != 0)return;
   let con = window.confirm("開始します");
   if(con == false)return;
+
+
+  //notifyMeのコピー元→　https://developer.mozilla.org/ja/docs/Web/API/Notification/permission_static
+  function notifyMe() {
+    if (!("Notification" in window)) {
+      // ブラウザーが通知に対応しているかどうかをチェックする
+      alert("このブラウザーはデスクトップ通知に対応していません。");
+    } else if (Notification.permission === "granted") {
+      // 通知の許可が既に得られているかどうかをチェックする
+      // それならば、通知を作成する
+      const notification = new Notification("こんにちは！");
+      // …
+    } else if (Notification.permission !== "denied") {
+      // そうでなければ、ユーザーに許可を求める必要がある
+      Notification.requestPermission().then((permission) => {
+        // ユーザーが許可したら、通知を作成する
+        if (permission === "granted") {
+          const notification = new Notification("こんにちは！");
+          // …
+        }
+      });
+    }
+  }
+  notifyMe();
+
+  
   
   let nowTime = new Date();
   //startTime = nowTime.getTime();
