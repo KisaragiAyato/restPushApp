@@ -34,7 +34,7 @@ window.onload = function() {
     }
   }
   notifyMe();
-
+  $("keikaSpan").value = Notification.permission;
 };
 
 const onlyNumbers = n => {
